@@ -115,7 +115,11 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public final void onNext(List<Issues> response) {
-                        issueAdapter.addItems(response);
+                        if(response.size() == 0) {
+                            clearListAndMakeToast("No Issues found for this repo");
+                        } else {
+                            issueAdapter.addItems(response);
+                        }
                     }
                 });
     }
